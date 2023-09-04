@@ -6,5 +6,45 @@
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <p>Learn about <a href="https://learn.microsoft.com/es-mx/aspnet/core/tutorials/razor-pages/?view=aspnetcore-7.0">building Web apps with ASP.NET Core</a>.</p>
+    <p>@Model.NombreDelDia</p>
+
+    <form method="post" asp-page-handler="sum">
+        <label for="numero1">Número 1:</label>
+        <input type="text" id="numero1" name="numero1" asp-for="Numero1" />
+
+        <br /><br />
+
+        <label for="numero2">Número 2:</label>
+        <input type="text" id="numero2" name="numero2" asp-for="Numero2" />
+
+        <br /><br />
+
+        <button type="submit">Sumar</button>
+    </form>
+
+    <br /><br />
+
+    @if (Model.Resultado != null)
+    {
+        <p>Resultado: @Model.Resultado</p>
+    }
+    <form method="post" asp-page-handler="cut">
+        <label for="stringInput">Cadena a cortar:</label>
+        <input type="text" id="stringInput" name="stringInput" asp-for="StringInput" />
+
+        <br /><br />
+        <button type="submit">Cortar</button>
+    </form>
+
+    <p>Resultado: @ViewData["StringResult"]</p>
+    <br /><br />
+
+    <form method="get" asp-page-handler="datetime">
+        <label>Fecha y Hora Actual: @Model.fechaHoraActual</label>
+
+        <br /><br />
+        <button type="submit">Obtener Fecha y Hora Actual</button>
+    </form>
+
 </div>
